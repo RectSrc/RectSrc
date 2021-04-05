@@ -19,12 +19,14 @@ namespace RectSrc.Game.Rendering
 
         public static void LoadMesh(string meshName)
         {
+            Console.WriteLine("Loading mesh...");
             Model mesh = Raylib.LoadModel(Directory.GetCurrentDirectory() + "/models/" + meshName + ".obj");
             models.Add(meshName, mesh);
         }
 
         public static void DrawCall(RenderCall call)
         {
+            Console.Write("");
             renders.Enqueue(call);
         }
     }
