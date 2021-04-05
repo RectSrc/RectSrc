@@ -20,10 +20,7 @@ namespace RectSrc.Core
             ReCTProgram = Assembly.LoadFrom(Directory.GetCurrentDirectory() + "/" + assemblyName);
             PrepareCode();
 
-            while (true)
-            {
-                GameManager.UpdateAll();
-            }
+            GameManager.GameLoop();
 
         }
 
