@@ -85,6 +85,36 @@ namespace RectSrc.Core.Game.Entities
         {
             Raylib.DrawCube(transform.position.systemized, 5, 5, 5, Color.GREEN);
         }
+
+        public override void Update()
+        {
+            transform.position.x += Raylib.GetFrameTime();
+        }
+    }
+
+    public class Text : UIentity
+    {
+        public string text;
+        public int size = 10;
+
+        public Text(string text, int size)
+        {
+            this.UIEntity = true;
+            this.text = text;
+            this.size = size;
+        }
+
+        public Text(string text)
+        {
+            this.UIEntity = true;
+            this.text = text;
+        }
+
+        public override void UIRender()
+        {
+            Console.WriteLine("UIENTITY!");
+            Raylib.DrawText(text, (int)transform.position.x, (int)transform.position.y, size, Color.BLACK);
+        }
     }
 
     public class Camera : Entity
