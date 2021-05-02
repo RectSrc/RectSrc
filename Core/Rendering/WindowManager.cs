@@ -31,7 +31,7 @@ namespace RectSrc.Core.Rendering
             {
                 GameManager.level.entities[i].AfterRender();
             }
-            Raylib.DrawFPS(5, 5);
+            //Raylib.DrawFPS(5, 5);
             Raylib.EndDrawing();
         }
 

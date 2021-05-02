@@ -22,7 +22,7 @@ namespace RectSrc.Core.Game.Entities
 
         public virtual void OnRender()
         {
-            Raylib.DrawCube(transform.pos.systemized, 5, 5, 5, Color.GREEN);
+            Raylib.DrawCube(transform.position.systemized, 5, 5, 5, Color.GREEN);
         }
 
         public virtual void AfterRender()
@@ -35,7 +35,7 @@ namespace RectSrc.Core.Game.Entities
     {
         public override void OnRender()
         {
-            Raylib.DrawCube(transform.pos.systemized, 5, 5, 5, Color.GREEN);
+            Raylib.DrawCube(transform.position.systemized, 5, 5, 5, Color.GREEN);
         }
     }
 
@@ -50,9 +50,10 @@ namespace RectSrc.Core.Game.Entities
 
         public override void Init()
         {
-            this.transform = new Transform();
-            this.self = new Camera3D(transform.pos.systemized, Vector3.zero.systemized, Vector3.up.systemized, 90, CameraType.CAMERA_PERSPECTIVE);
+            this.transform.position = new Vector3(0, 10, 10);
+            this.self = new Camera3D(transform.position.systemized, Vector3.zero.systemized, Vector3.up.systemized, 45.0f, CameraType.CAMERA_PERSPECTIVE);
         }
+
         public override void BeforeRender()
         {
             Raylib.BeginMode3D(self);
@@ -61,19 +62,20 @@ namespace RectSrc.Core.Game.Entities
         public override void AfterRender()
         {
             Raylib.EndMode3D();
+            Raylib.DrawFPS(10, 10);
         }
     }
 
     public class Transform
     {
-        public Vector3 pos;
+        public Vector3 position;
         public Transform()
         {
-            this.pos = Vector3.zero;
+            this.position = Vector3.zero;
         }
         public Transform(Vector3 pos)
         {
-            this.pos = pos;
+            this.position = pos;
         }
     }
 }
