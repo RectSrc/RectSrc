@@ -32,6 +32,20 @@ namespace RectSrc.Core.Math
             }
         }
 
+        public System.Numerics.Vector3 systemized
+        {
+            get
+            {
+                return new System.Numerics.Vector3(x, y, z);
+            }
+            set
+            {
+                x = value.X;
+                y = value.Y;
+                z = value.Z;
+            }
+        }
+
         public Vector3 normalized
         {
             get
@@ -102,5 +116,5 @@ namespace RectSrc.Core.Math
         public static readonly Vector3 backward = new Vector3(0, 0, -1);
 
 
-    }
+}
 }

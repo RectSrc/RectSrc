@@ -12,5 +12,9 @@ namespace RectSrc.Core.Game
     public class Level
     {
         public List<Entity> entities;
+        public Level()
+        {
+            entities = new List<Entity>();
+        }
     }
 }

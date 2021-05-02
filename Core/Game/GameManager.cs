@@ -7,14 +7,25 @@ namespace RectSrc.Core.Game
 {
     public static class GameManager
     {
-        public static void Run()
+        public static Level level;
+        public static void Run(Level levelToRun)
         {
+            level = levelToRun;
             WindowManager.Init();
+            for (int i = 0; i < level.entities.Count; i++)
+            {
+                level.entities[i].Init();
+            }
             while (!Raylib_cs.Raylib.WindowShouldClose())
             {
                 WindowManager.Render();
             }
             WindowManager.Finish();
+        }
+
+        public static void Update()
+        {
+            
         }
     }
 }

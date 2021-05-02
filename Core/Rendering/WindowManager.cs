@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using Raylib_cs;
+using RectSrc.Core.Game;
+
 namespace RectSrc.Core.Rendering
 {
     public static class WindowManager
@@ -17,6 +19,18 @@ namespace RectSrc.Core.Rendering
         {
             Raylib.BeginDrawing();
             Raylib.ClearBackground(Color.WHITE);
+            for (int i = 0; i < GameManager.level.entities.Count; i++)
+            {
+                GameManager.level.entities[i].BeforeRender();
+            }
+            for (int i = 0; i < GameManager.level.entities.Count; i++)
+            {
+                GameManager.level.entities[i].OnRender();
+            }
+            for (int i = 0; i < GameManager.level.entities.Count; i++)
+            {
+                GameManager.level.entities[i].AfterRender();
+            }
             Raylib.DrawFPS(5, 5);
             Raylib.EndDrawing();
         }
