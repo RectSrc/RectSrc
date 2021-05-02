@@ -5,6 +5,8 @@ using System.Numerics;
 
 namespace RectSrc.Core.Math
 {
+
+    //Self explainatory
     public static class Mathf
     {
         public static float Sin(float x)

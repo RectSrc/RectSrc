@@ -8,8 +8,14 @@ namespace RectSrc.Core.Game.Entities
 
     public abstract class Entity
     {
+        //The transform of the entity
         public Transform transform = new Transform();
-
+        //Call orders in pseudo code:
+        //Init();
+        //forever:
+        //  BeforeRender();
+        //  OnRender();
+        //  AfterRender();
         public virtual void Init()
         {
 
@@ -31,8 +37,28 @@ namespace RectSrc.Core.Game.Entities
         }
     }
 
+    public class Model : Entity
+    {
+        //Stores a model and renders it
+        Raylib_cs.Model model;
+
+        public Model(Raylib_cs.Model model)
+        {
+            this.model = model;
+        }
+        public Model(string fileName)
+        {
+            this.model = Raylib.LoadModel(fileName);
+        }
+        public override void OnRender()
+        {
+            Raylib.DrawModelEx(model, transform.position.systemized, Vector3.zero.systemized, 0, transform.scale.systemized, Color.WHITE);
+        }
+    }
+
     public class Cube : Entity
     {
+        //A cube... scale does not apply
         public override void OnRender()
         {
             Raylib.DrawCube(transform.position.systemized, 5, 5, 5, Color.GREEN);
@@ -41,6 +67,7 @@ namespace RectSrc.Core.Game.Entities
 
     public class Camera : Entity
     {
+        // A Camera3D intergration from raylib, just handles the basics like the transform
         Camera3D self;
         public float fov
         {
@@ -78,14 +105,22 @@ namespace RectSrc.Core.Game.Entities
 
     public class Transform
     {
+        // A transform: A transformation in a 3D space
         public Vector3 position;
+        public Vector3 scale;
         public Transform()
         {
             this.position = Vector3.zero;
         }
+        public Transform(Vector3 pos, Vector3 scale)
+        {
+            this.position = pos;
+            this.scale = scale;
+        }
         public Transform(Vector3 pos)
         {
             this.position = pos;
+            this.scale = Vector3.one;
         }
     }
 }

@@ -10,6 +10,7 @@ namespace RectSrc.Core.Rendering
     {
         public static void Init()
         {
+            //Sets the window name, size, fps and enables VSYNC
             Raylib.InitWindow(500, 500, "ReCTSrc Game");
             Raylib.SetTargetFPS(60);
             Raylib.SetWindowState(ConfigFlag.FLAG_VSYNC_HINT);
@@ -17,6 +18,7 @@ namespace RectSrc.Core.Rendering
 
         public static void Render()
         {
+            //Begins drawing, clears, calls the scripts *Render functions and stops drawing
             Raylib.BeginDrawing();
             Raylib.ClearBackground(Color.WHITE);
             for (int i = 0; i < GameManager.level.entities.Count; i++)
@@ -31,13 +33,13 @@ namespace RectSrc.Core.Rendering
             {
                 GameManager.level.entities[i].AfterRender();
             }
-            //Raylib.DrawFPS(5, 5);
             Raylib.EndDrawing();
         }
 
         public static void Finish()
         {
-            Raylib.WindowShouldClose();
+            //Closes the window 
+            Raylib.CloseWindow();
         }
     }
 }

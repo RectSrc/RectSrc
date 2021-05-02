@@ -26,12 +26,13 @@ namespace RectSrc.Core.Math
         {
             get
             {
-                float XY = MathF.Sqrt((x * x) + (y * y));
-                float XYZ = MathF.Sqrt((XY * XY) + (z * z));
+                // Calculate the magnitude(length) of the vector, this is simply done with some trigonometry;
+                float XY = Mathf.Sqrt((x * x) + (y * y));
+                float XYZ = Mathf.Sqrt((XY * XY) + (z * z));
                 return XYZ;
             }
         }
-
+        //Convert the vector into a System.Numerics vector
         public System.Numerics.Vector3 systemized
         {
             get
@@ -45,12 +46,12 @@ namespace RectSrc.Core.Math
                 z = value.Z;
             }
         }
-
+        //Convert a system.numerics vector >:)
         public static Vector3 FromSystem(System.Numerics.Vector3 vector3)
         {
             return new Vector3(vector3.X, vector3.Y, vector3.Z);
         }
-
+        //Normalize it...
         public Vector3 normalized
         {
             get
