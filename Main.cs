@@ -6,6 +6,7 @@ using Mono.Cecil;
 using System.IO;
 using RectSrc.Core.Game;
 using RectSrc.Core.Game.Entities;
+using RectSrc.Core.IO;
 namespace RectSrc.Bin
 {
     public static class MainProgram

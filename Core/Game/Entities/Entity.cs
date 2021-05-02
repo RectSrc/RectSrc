@@ -49,6 +49,7 @@ namespace RectSrc.Core.Game.Entities
     public abstract class UIentity : Entity
     {
         //Like a standard entity but only gets the UIrender call and that happens last, also, it has the UIentity set to true
+        [Newtonsoft.Json.JsonIgnore]
         public new bool UIEntity = true;
         public UIentity()
         {
@@ -87,11 +88,6 @@ namespace RectSrc.Core.Game.Entities
         {
             Raylib.DrawCube(transform.position.systemized, 5, 5, 5, Color.GREEN);
         }
-
-        public override void Update()
-        {
-            transform.position.x += Raylib.GetFrameTime();
-        }
     }
 
     public class Text : UIentity
@@ -114,7 +110,6 @@ namespace RectSrc.Core.Game.Entities
 
         public override void UIRender()
         {
-            Console.WriteLine("UIENTITY!");
             Raylib.DrawText(text, (int)transform.position.x, (int)transform.position.y, size, Color.BLACK);
         }
     }
@@ -123,6 +118,7 @@ namespace RectSrc.Core.Game.Entities
     {
         // A Camera3D intergration from raylib, just handles the basics like the transform
         Camera3D self;
+        [Newtonsoft.Json.JsonIgnore]
         public float fov
         {
             get { return self.fovy; }
@@ -137,6 +133,11 @@ namespace RectSrc.Core.Game.Entities
         public Camera()
         {
 
+        }
+
+        public Camera(Vector3 pos)
+        {
+            transform.position = pos;
         }
 
         public override void Init()
