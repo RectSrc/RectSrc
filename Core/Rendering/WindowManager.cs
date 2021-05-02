@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Raylib_cs;
 using RectSrc.Core.Game;
+using RectSrc.Core.Game.Entities;
 
 namespace RectSrc.Core.Rendering
 {
@@ -23,15 +24,25 @@ namespace RectSrc.Core.Rendering
             Raylib.ClearBackground(Color.WHITE);
             for (int i = 0; i < GameManager.level.entities.Count; i++)
             {
-                GameManager.level.entities[i].BeforeRender();
+                if (!GameManager.level.entities[i].UIEntity)
+                    GameManager.level.entities[i].BeforeRender();
             }
             for (int i = 0; i < GameManager.level.entities.Count; i++)
             {
-                GameManager.level.entities[i].OnRender();
+                if (!GameManager.level.entities[i].UIEntity)
+                    GameManager.level.entities[i].OnRender();
             }
             for (int i = 0; i < GameManager.level.entities.Count; i++)
             {
-                GameManager.level.entities[i].AfterRender();
+                //Only render non-ui entities first
+                if (!GameManager.level.entities[i].UIEntity)
+                    GameManager.level.entities[i].AfterRender();
+            }
+            for (int i = 0; i < GameManager.level.entities.Count; i++)
+            {
+                //Only render ui entities last
+                if (GameManager.level.entities[i].UIEntity)
+                    ((UIentity)GameManager.level.entities[i]).UIRender();
             }
             Raylib.EndDrawing();
         }

@@ -21,6 +21,10 @@ namespace RectSrc.Core.Game
             //Makes sure to call the render in each entity
             while (!Raylib_cs.Raylib.WindowShouldClose())
             {
+                for (int i = 0; i < level.entities.Count; i++)
+                {
+                    level.entities[i].Update();
+                }
                 WindowManager.Render();
                 Update(); //Not used yet
             }

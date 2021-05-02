@@ -10,6 +10,8 @@ namespace RectSrc.Core.Game.Entities
     {
         //The transform of the entity
         public Transform transform = new Transform();
+        //Is it an UI entity?
+        public bool UIEntity = false;
         //Call orders in pseudo code:
         //Init();
         //forever:
@@ -17,6 +19,11 @@ namespace RectSrc.Core.Game.Entities
         //  OnRender();
         //  AfterRender();
         public virtual void Init()
+        {
+
+        }
+
+        public virtual void Update()
         {
 
         }
@@ -36,6 +43,20 @@ namespace RectSrc.Core.Game.Entities
 
         }
     }
+    
+    public abstract class UIentity : Entity
+    {
+        //Like a standard entity but only gets the UIrender call and that happens last, also, it has the UIentity set to true
+        public new bool UIEntity = true;
+        public UIentity()
+        {
+            this.UIEntity = true;
+        }
+        public virtual void UIRender()
+        {
+            Raylib.DrawText("UIent!", (int)transform.position.x, (int)transform.position.y, 10, Color.BLACK);
+        }
+    }
 
     public class Model : Entity
     {
@@ -46,6 +67,7 @@ namespace RectSrc.Core.Game.Entities
         {
             this.model = model;
         }
+        
         public Model(string fileName)
         {
             this.model = Raylib.LoadModel(fileName);
