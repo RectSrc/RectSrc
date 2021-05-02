@@ -35,8 +35,6 @@ namespace RectSrc.Core.Game
             {
                 level.entities[i].Update();
             }
-
-            ((Camera)level.entities[0]).target = ((Cube)level.entities[1]).transform.position;
         }
     }
 }

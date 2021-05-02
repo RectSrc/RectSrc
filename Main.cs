@@ -13,13 +13,6 @@ namespace RectSrc.Bin
         public static void Main(string[] args)
         {
             Level level = new Level();
-            Camera cam = new Camera();
-            Text text = new Text("Hi!", 20);
-            Console.WriteLine(text.UIEntity);
-            cam.transform.position = Core.Math.Vector3.one * 10;
-            level.entities.Add(cam);
-            level.entities.Add(new Cube());
-            level.entities.Add(text);
             GameManager.Run(level);
         }
     }
