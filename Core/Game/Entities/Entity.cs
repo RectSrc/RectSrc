@@ -87,7 +87,6 @@ namespace RectSrc.Core.Game.Entities
 
         public override void Init()
         {
-            this.transform.position = new Vector3(0, 10, 10);
             this.self = new Camera3D(transform.position.systemized, Vector3.zero.systemized, Vector3.up.systemized, 45.0f, CameraType.CAMERA_PERSPECTIVE);
         }
 

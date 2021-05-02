@@ -113,7 +113,7 @@ namespace RectSrc.Core.Math
         //The directions, and some more
 
         public static readonly Vector3 zero = new Vector3(0, 0, 0);
-        public static readonly Vector3 one = new Vector3(0, 0, 0);
+        public static readonly Vector3 one = new Vector3(1, 1, 1);
         public static readonly Vector3 up = new Vector3(0, 1, 0);
         public static readonly Vector3 down = new Vector3(0, -1, 0);
         public static readonly Vector3 left = new Vector3(-1, 0, 0);

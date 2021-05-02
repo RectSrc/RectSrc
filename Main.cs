@@ -14,7 +14,7 @@ namespace RectSrc.Bin
         {
             Level level = new Level();
             Camera cam = new Camera();
-            cam.transform = new Transform(Core.Math.Vector3.one * 10);
+            cam.transform.position = Core.Math.Vector3.one * 10;
             level.entities.Add(cam);
             level.entities.Add(new Cube());
             GameManager.Run(level);
