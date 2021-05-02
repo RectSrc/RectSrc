@@ -12,6 +12,8 @@ namespace RectSrc.Core.Game.Entities
         public Transform transform = new Transform();
         //Is it an UI entity?
         public bool UIEntity = false;
+        //The reference name of the entity
+        public string name = "null";
         //Call orders in pseudo code:
         //Init();
         //forever:

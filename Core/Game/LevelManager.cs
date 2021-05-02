@@ -16,5 +16,15 @@ namespace RectSrc.Core.Game
         {
             entities = new List<Entity>();
         }
+
+        public Entity GetEntity(string name)
+        {
+            for (int i = 0; i < entities.Count; i++)
+            {
+                if (entities[i].name == name)
+                    return entities[i];
+            }
+            return null;
+        }
     }
 }
