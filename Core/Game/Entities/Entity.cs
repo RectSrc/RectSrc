@@ -41,7 +41,17 @@ namespace RectSrc.Core.Game.Entities
 
     public class Camera : Entity
     {
-        public Camera3D self;
+        Camera3D self;
+        public float fov
+        {
+            get { return self.fovy; }
+            set { self.fovy = value; }
+        }
+        public Vector3 target
+        {
+            get { return Vector3.FromSystem(self.target); }
+            set { self.target = value.systemized; }
+        }
 
         public Camera()
         {

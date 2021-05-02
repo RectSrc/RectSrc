@@ -46,6 +46,11 @@ namespace RectSrc.Core.Math
             }
         }
 
+        public static Vector3 FromSystem(System.Numerics.Vector3 vector3)
+        {
+            return new Vector3(vector3.X, vector3.Y, vector3.Z);
+        }
+
         public Vector3 normalized
         {
             get
