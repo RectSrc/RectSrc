@@ -14,6 +14,7 @@ namespace RectSrc.Bin
         public static void Main(string[] args)
         {
             Level level = new Level();
+            level = GameLoader.LoadLevel(Directory.GetCurrentDirectory() + "/test.rsl");
             GameManager.Run(level);
         }
     }

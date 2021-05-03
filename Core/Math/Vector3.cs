@@ -4,6 +4,7 @@ using System.Text;
 
 namespace RectSrc.Core.Math
 {
+    [Serializable]
     public class Vector3
     {
         public float x, y, z;

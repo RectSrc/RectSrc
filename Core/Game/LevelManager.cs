@@ -4,7 +4,7 @@ using System.Text;
 using RectSrc.Core.Game.Entities;
 namespace RectSrc.Core.Game
 {
-
+    [Serializable]
     public class Level
     {
         public List<Entity> entities;

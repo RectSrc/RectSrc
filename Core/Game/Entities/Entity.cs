@@ -5,7 +5,7 @@ using RectSrc.Core.Math;
 using Raylib_cs;
 namespace RectSrc.Core.Game.Entities
 {
-
+    [Serializable]
     public abstract class Entity
     {
         //The transform of the entity
@@ -45,7 +45,7 @@ namespace RectSrc.Core.Game.Entities
 
         }
     }
-    
+    [Serializable]
     public abstract class UIentity : Entity
     {
         //Like a standard entity but only gets the UIrender call and that happens last, also, it has the UIentity set to true
@@ -60,7 +60,7 @@ namespace RectSrc.Core.Game.Entities
             Raylib.DrawText("UIent!", (int)transform.position.x, (int)transform.position.y, 10, Color.BLACK);
         }
     }
-
+    [Serializable]
     public class Model : Entity
     {
         //Stores a model and renders it
@@ -80,16 +80,25 @@ namespace RectSrc.Core.Game.Entities
             Raylib.DrawModelEx(model, transform.position.systemized, Vector3.zero.systemized, 0, transform.scale.systemized, Color.WHITE);
         }
     }
-
+    [Serializable]
     public class Cube : Entity
     {
         //A cube... scale does not apply
+
+        public Cube()
+        {
+            transform = new Transform();
+        }
+        public Cube(Vector3 pos)
+        {
+            transform = new Transform(pos);
+        }
         public override void OnRender()
         {
             Raylib.DrawCube(transform.position.systemized, 5, 5, 5, Color.GREEN);
         }
     }
-
+    [Serializable]
     public class Text : UIentity
     {
         public string text;
@@ -113,11 +122,35 @@ namespace RectSrc.Core.Game.Entities
             Raylib.DrawText(text, (int)transform.position.x, (int)transform.position.y, size, Color.BLACK);
         }
     }
-
+    [Serializable]
     public class Camera : Entity
     {
+        [Serializable]
+        public class SerializableCamera3D
+        {
+            public float fov;
+            public Vector3 target;
+
+            public SerializableCamera3D(Camera3D camera)
+            {
+                fov = camera.fovy;
+                target = Vector3.FromSystem(camera.target);
+            }
+
+            public static Camera3D FromSerializedCam(SerializableCamera3D serializableCamera)
+            {
+                Camera3D retVal = new Camera3D(Vector3.zero.systemized, Vector3.zero.systemized, Vector3.up.systemized, serializableCamera.fov, CameraType.CAMERA_PERSPECTIVE);
+                retVal.target = serializableCamera.target.systemized;
+                return retVal;
+            }
+        }
         // A Camera3D intergration from raylib, just handles the basics like the transform
+        [NonSerialized]
         Camera3D self;
+
+
+        SerializableCamera3D _self;
+
         [Newtonsoft.Json.JsonIgnore]
         public float fov
         {
@@ -130,9 +163,9 @@ namespace RectSrc.Core.Game.Entities
             set { self.target = value.systemized; }
         }
 
-        public Camera()
+        public Camera(SerializableCamera3D serializableCamera)
         {
-
+            self = SerializableCamera3D.FromSerializedCam(serializableCamera);
         }
 
         public Camera(Vector3 pos)
@@ -143,6 +176,11 @@ namespace RectSrc.Core.Game.Entities
         public override void Init()
         {
             this.self = new Camera3D(transform.position.systemized, Vector3.zero.systemized, Vector3.up.systemized, 45.0f, CameraType.CAMERA_PERSPECTIVE);
+            if (_self != null)
+            {
+                this.fov = _self.fov;
+                this.target = _self.target;
+            }
         }
 
         public override void BeforeRender()
@@ -155,8 +193,13 @@ namespace RectSrc.Core.Game.Entities
             Raylib.EndMode3D();
             Raylib.DrawFPS(10, 10);
         }
-    }
 
+        public override void Update()
+        {
+            self.position = transform.position.systemized;
+        }
+    }
+    [Serializable]
     public class Transform
     {
         // A transform: A transformation in a 3D space
