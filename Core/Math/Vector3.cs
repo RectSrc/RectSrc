@@ -22,7 +22,7 @@ namespace RectSrc.Core.Math
             this.y = y;
             this.z = z;
         }
-        [Newtonsoft.Json.JsonIgnore]
+
         public float magnitude
         {
             get
@@ -34,7 +34,7 @@ namespace RectSrc.Core.Math
             }
         }
         //Convert the vector into a System.Numerics vector
-        [Newtonsoft.Json.JsonIgnore]
+
         public System.Numerics.Vector3 systemized
         {
             get
@@ -113,21 +113,13 @@ namespace RectSrc.Core.Math
 
 
         //The directions, and some more
-        [Newtonsoft.Json.JsonIgnore]
         public static readonly Vector3 zero = new Vector3(0, 0, 0);
-        [Newtonsoft.Json.JsonIgnore]
         public static readonly Vector3 one = new Vector3(1, 1, 1);
-        [Newtonsoft.Json.JsonIgnore]
         public static readonly Vector3 up = new Vector3(0, 1, 0);
-        [Newtonsoft.Json.JsonIgnore]
         public static readonly Vector3 down = new Vector3(0, -1, 0);
-        [Newtonsoft.Json.JsonIgnore]
         public static readonly Vector3 left = new Vector3(-1, 0, 0);
-        [Newtonsoft.Json.JsonIgnore]
         public static readonly Vector3 right = new Vector3(1, 0, 0);
-        [Newtonsoft.Json.JsonIgnore]
         public static readonly Vector3 forward = new Vector3(0, 0, 1);
-        [Newtonsoft.Json.JsonIgnore]
         public static readonly Vector3 backward = new Vector3(0, 0, -1);
 
 

@@ -37,4 +37,21 @@ namespace RectSrc.Core.Game
             }
         }
     }
+    [Serializable]
+    public class GameData
+    {
+        [NonSerialized]
+        public List<Level> levels = new List<Level>();
+        public List<string> levelPaths = new List<string>();
+        public string name = "RectSrc game";
+
+        public GameData(string name)
+        {
+            this.name = name.Replace(" ", "");
+        }
+        public GameData()
+        {
+
+        }
+    }
 }

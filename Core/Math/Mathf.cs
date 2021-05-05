@@ -36,9 +36,7 @@ namespace RectSrc.Core.Math
         {
             return MathF.Sqrt(num);
         }
-        [Newtonsoft.Json.JsonIgnore]
         public static readonly float Pi = MathF.PI;
-        [Newtonsoft.Json.JsonIgnore]
         public static readonly float DegToRad = Mathf.Pi / 180f;
     }
 }

@@ -49,7 +49,6 @@ namespace RectSrc.Core.Game.Entities
     public abstract class UIentity : Entity
     {
         //Like a standard entity but only gets the UIrender call and that happens last, also, it has the UIentity set to true
-        [Newtonsoft.Json.JsonIgnore]
         public new bool UIEntity = true;
         public UIentity()
         {
@@ -151,16 +150,15 @@ namespace RectSrc.Core.Game.Entities
 
         SerializableCamera3D _self;
 
-        [Newtonsoft.Json.JsonIgnore]
         public float fov
         {
             get { return self.fovy; }
-            set { self.fovy = value; }
+            set { self.fovy = value; _self.fov = fov; }
         }
         public Vector3 target
         {
             get { return Vector3.FromSystem(self.target); }
-            set { self.target = value.systemized; }
+            set { self.target = value.systemized; _self.target = value; }
         }
 
         public Camera(SerializableCamera3D serializableCamera)
@@ -180,6 +178,10 @@ namespace RectSrc.Core.Game.Entities
             {
                 this.fov = _self.fov;
                 this.target = _self.target;
+            }
+            else
+            {
+                _self = new SerializableCamera3D(this.self);
             }
         }
 
