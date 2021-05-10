@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "RectSrc builder": {
+      "commandName": "Project",
+      "commandLineArgs": "build \"D:\\vs2019\\RectSrc\""
+    }
+  }
+}

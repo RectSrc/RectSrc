@@ -32,10 +32,10 @@ namespace RectSrc.Core.IO
         {
             //Console.WriteLine("Creating directories...");
             Directory.CreateDirectory(Directory.GetCurrentDirectory() + "/" + game.name);
-            Directory.CreateDirectory(Directory.GetCurrentDirectory() + "/RectSrc/static");
+            Directory.CreateDirectory(Directory.GetCurrentDirectory() + "/engine/static");
             //Console.WriteLine("Writing the game...");
             //Console.WriteLine("Opening file stream...");
-            Stream s = File.Open(Directory.GetCurrentDirectory() + "/RectSrc/static/data.rsg", FileMode.Create);
+            Stream s = File.Open(Directory.GetCurrentDirectory() + "/engine/static/data.rsg", FileMode.Create);
             BinaryFormatter b = new BinaryFormatter();
             //Console.WriteLine("Writing the levels...");
             Directory.CreateDirectory(Directory.GetCurrentDirectory() + "/" + game.name + "/levels");

@@ -36,6 +36,11 @@ namespace RectSrc.Core.Math
         {
             return MathF.Sqrt(num);
         }
+
+        public static int Clamp(int val, int min, int max)
+        {
+            return System.Math.Clamp(val, min, max);
+        }
         public static readonly float Pi = MathF.PI;
         public static readonly float DegToRad = Mathf.Pi / 180f;
     }
