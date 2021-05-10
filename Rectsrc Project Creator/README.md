@@ -1,2 +1,2 @@
-#RectSrc Project Creator
+# RectSrc Project Creator
 It creates rectsrc projects
