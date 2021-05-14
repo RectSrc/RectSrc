@@ -6,4 +6,14 @@
     <RootNamespace>RectSrc_Editor</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Raylib-cs" Version="3.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="RectSrc">
+      <HintPath>..\rsp\bin\Debug\netcoreapp3.1\RectSrc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
