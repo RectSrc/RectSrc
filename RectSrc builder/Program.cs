@@ -6,7 +6,7 @@ using ShellProgressBar;
 
 namespace RectSrc.Builder
 {
-    public static class Program
+    public static class RectSrcBuilder
     {
         public static string currentDirectory;
         public static string runMain =
@@ -60,6 +60,13 @@ namespace RectSrc.Bin
     }
 }
 ";
+
+        public static void Build(string path)
+        {
+            Main(new string[] {"build", path});
+        }
+
+
         public static void Main(string[] args)
         {
             if(args.Length < 1)
