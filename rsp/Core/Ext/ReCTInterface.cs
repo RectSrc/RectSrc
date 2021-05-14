@@ -1,6 +1,5 @@
 ﻿//RectSrc/Core/Ext/ReCTInterface.cs, the only file wich will be breaking the rules used by others, it will also be kinda annoying, but needed, it interfaces with rect ig :)
 using System;
-using System.Collections;
 using RectSrc;
 using RectSrc.Core;
 
