@@ -1,19 +1,18 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
     <RootNamespace>RectSrc_Editor</RootNamespace>
+    <Authors>RectSrc</Authors>
+    <Description>The RectSrc editor</Description>
+    <Copyright>The RectSrc team</Copyright>
+    <NeutralLanguage>en</NeutralLanguage>
+    <Version>0.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Raylib-cs" Version="3.5.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="RectSrc">
-      <HintPath>..\rsp\bin\Debug\netcoreapp3.1\RectSrc.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
 </Project>

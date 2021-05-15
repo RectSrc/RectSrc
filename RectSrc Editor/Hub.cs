@@ -5,13 +5,15 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using Raylib_cs;
-namespace RectSrc_Editor
+namespace RectSrc.Editor.Old
 {
+    [Obsolete("Replaced by the W.I.P Electron.Net project instead", true)]
     public static class Hub
     {
         static bool hasTriedClosing = false;
         static float aspectRatioFromHeight = 16f / 9f;
         static float aspectRatioFromWidth = 9f / 16f;
+        [Obsolete("Replaced by the W.I.P Electron.Net project instead", true)]
         public static void Run(string[] args)
         {
             Raylib.InitWindow(1600, 900, "RectSrc Hub");
